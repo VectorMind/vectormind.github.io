@@ -1,0 +1,22 @@
+# Local evidence collection and generated working state
+.cache/
+
+# Common local/runtime artifacts
+.tmp/
+node_modules/
+dist/
+.astro/
+.env
+.env.*
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Editors and operating systems
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
