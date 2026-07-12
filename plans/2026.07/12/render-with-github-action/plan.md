@@ -2,7 +2,9 @@
 
 ## Status
 
-Proposed. No renderer or workflow code has been changed.
+Implemented locally through Phase 4. The reusable renderer Action is consumed
+from `MicroWebStacks/astro-huge-doc@main` with engine `0.0.10`; Phase 5 remains
+open for the first GitHub Pages run and production route checks.
 
 ## Problem
 
@@ -16,17 +18,17 @@ The reference Pages workflow uses `withastro/action@v2` followed by
 builds with Astro's Node adapter, and declares `output: "server"`; it is not yet
 a consumer-facing static Pages builder.
 
-## Recommendation
+## Accepted direction
 
-Add a **thin reusable static-render interface** to `astro-huge-doc`, then expose
-it to repositories through a versioned composite GitHub Action or an equivalent
-versioned CLI package. Keep this interface separate from the VS Code extension
-packaging and runtime.
+Use the thin reusable static-render Action in `astro-huge-doc` from a workflow
+owned by this repository. Run it on every push to `main` and allow manual
+dispatch, upload the generated artifact with `actions/upload-pages-artifact`,
+then deploy it with `actions/deploy-pages`.
 
-The important reuse boundary is the renderer command and content contract. The
-Action should orchestrate that public boundary; it should not duplicate renderer
-source or reach into extension internals. This preserves a single rendering
-implementation without turning the extension itself into deployment machinery.
+The Action reference deliberately follows `MicroWebStacks/astro-huge-doc@main`
+instead of an immutable release. This accepts upstream changes immediately and
+is less reproducible than a tag or commit pin. The engine input remains an exact
+published version because that is required by the Action contract.
 
 ## Proposed ownership split
 
@@ -78,25 +80,42 @@ static-output mode and a stable consumer configuration contract in
 
 | ID | Question | Recommendation | Status |
 | --- | --- | --- | --- |
-| OP-001 | What is the reusable boundary? | A renderer CLI/static-build contract first, with a thin composite Action wrapper. | Awaiting acceptance |
-| OP-002 | Where should `action.yml` live? | In `astro-huge-doc` if it remains a thin wrapper; use a dedicated action repo only if release cadence or permissions later diverge. | Awaiting acceptance |
-| OP-003 | How is content mapped? | Explicit consumer config mapping `memory/` and `knowledge_base/`; never implicit scanning of `.cache/`. | Awaiting acceptance |
-| OP-004 | How is the renderer version pinned? | Immutable release tag or full commit SHA, with deliberate update PRs. | Awaiting acceptance |
+| OP-001 | What is the reusable boundary? | Use the composite Action implemented in `astro-huge-doc`; this repo owns the push-to-`main` Pages workflow. | Accepted 2026-07-12 |
+| OP-002 | Where should `action.yml` live? | Keep it in `astro-huge-doc`; this repo adds a consumer workflow comparable to the HomeSmartMesh Pages workflow. | Accepted 2026-07-12 |
+| OP-003 | How is content mapped? | Render the committed consumer workspace. `.cache/` is Git-ignored and therefore absent from the checked-out CI workspace. | Accepted 2026-07-12 |
+| OP-004 | How is the renderer version pinned? | Follow `MicroWebStacks/astro-huge-doc@main`; continue supplying the Action's required exact published engine version. | Accepted 2026-07-12 |
+
+## Resolved engine-release dependency
+
+Live verification on 2026-07-12 found:
+
+- `MicroWebStacks/astro-huge-doc@main` resolves to commit
+  `d319af05073d43c8cfe7b04eec4c3024f0863953` and contains `action.yml`;
+- the Action requires an exact `engine-version` and verifies that the installed
+  package contains `bin/md-render.js`;
+- at takeover time npm published `@microwebstacks/md-render` only through
+  `0.0.9`, while the upstream implementation record stated that those versions
+  predated the reusable `build` command.
+
+The maintainer subsequently published `0.0.10`. Local installation verified
+that it contains `bin/md-render.js`, and a full render of this repository
+completed successfully. The release dependency is resolved.
 
 ## Phases
 
-1. Write a durable static-render contract in `astro-huge-doc` specification.
-2. Add static build implementation and fixtures there; prove extension isolation.
-3. Add and version the reusable Action/CLI boundary.
-4. Add a pinned Pages workflow and site configuration here.
-5. Validate the production artifact and organization-domain deployment.
+1. Write a durable static-render contract in `astro-huge-doc` specification. **Done upstream.**
+2. Add static build implementation and fixtures there; prove extension isolation. **Done upstream.**
+3. Add and version the reusable Action/CLI boundary. **Done upstream; engine `0.0.10` published.**
+4. Add a Pages workflow and site configuration here, using the Action from `main` and an exact compatible engine version. **Done locally.**
+5. Validate the production artifact and organization-domain deployment. **Local artifact passed; GitHub run and deployed-site checks pending.**
 
 ## Risks
 
 - Server-only routes, SQLite-backed features, or dynamic content may not have a
   valid static equivalent.
 - Asset and link paths can break at the Pages base URL or custom domain.
-- An Action pinned to a moving branch would make builds non-reproducible.
+- Following the Action's moving `main` branch makes builds non-reproducible;
+  this is an explicitly accepted tradeoff.
 - Coupling Action inputs to extension internals would make both surfaces brittle.
 - Third-party diagram or fetch services can make CI non-deterministic.
 

@@ -38,10 +38,11 @@ See [WORKFLOW.md](WORKFLOW.md) for the operating contract and
 
 ## Current status
 
-The repository workflow and content boundaries are scaffolded. Website
-rendering and GitHub Pages deployment are tracked as an open plan in
-[`plans/open.md`](plans/open.md); no renderer integration has been implemented
-yet.
+The repository workflow and content boundaries are scaffolded. The Pages
+workflow is configured so a push to `main` renders the committed Markdown workspace with the reusable
+`MicroWebStacks/astro-huge-doc` Action and deploys the resulting static
+artifact to GitHub Pages. Deployment validation is tracked in
+[`plans/open.md`](plans/open.md).
 
 ## License
 
