@@ -1,0 +1,53 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.methods.briefing",
+  "name": "harborworks-briefing-methods",
+  "revision": "briefing-r1",
+  "owner": "Harborworks",
+  "description": "Small simulated context for harborworks-briefing-methods.",
+  "scope": {
+    "functions": [
+      "briefing"
+    ],
+    "domains": [
+      "*"
+    ],
+    "always": false
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../harborworks-context-core",
+      "revision": "core-r1"
+    }
+  ],
+  "exports": [
+    {
+      "path": "knowledge_base",
+      "kind": "knowledge"
+    },
+    {
+      "path": "skills",
+      "kind": "skill"
+    },
+    {
+      "path": "src",
+      "kind": "tool"
+    }
+  ],
+  "runtime": {
+    "kind": "node",
+    "entrypoint": "src/cli.mjs"
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read",
+      "execute"
+    ],
+    "tool_authorization": "approval-required"
+  }
+}

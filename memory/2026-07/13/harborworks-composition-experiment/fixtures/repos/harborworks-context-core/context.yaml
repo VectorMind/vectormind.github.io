@@ -1,0 +1,46 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.context.core",
+  "name": "harborworks-context-core",
+  "revision": "core-r1",
+  "owner": "Harborworks",
+  "description": "Small simulated context for harborworks-context-core.",
+  "scope": {
+    "functions": [
+      "composition"
+    ],
+    "domains": [
+      "context-management"
+    ],
+    "always": true
+  },
+  "imports": [],
+  "exports": [
+    {
+      "path": "knowledge_base",
+      "kind": "knowledge"
+    },
+    {
+      "path": "skills",
+      "kind": "skill"
+    },
+    {
+      "path": "src",
+      "kind": "tool"
+    }
+  ],
+  "runtime": {
+    "kind": "python",
+    "entrypoint": "src/cli.py"
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read"
+    ],
+    "tool_authorization": "approval-required"
+  }
+}

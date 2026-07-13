@@ -1,0 +1,38 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.scenario.policy-conflict",
+  "name": "harborworks-policy-conflict",
+  "revision": "scenario-policy-r1",
+  "owner": "Harborworks",
+  "description": "Root-order independence scenario.",
+  "scope": {
+    "functions": [
+      "composition"
+    ],
+    "domains": [
+      "context-management"
+    ],
+    "always": true
+  },
+  "exports": [],
+  "runtime": {
+    "kind": "none",
+    "entrypoint": null
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read"
+    ],
+    "required_capabilities": [
+      "read"
+    ],
+    "tool_authorization": "forbidden"
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.methods.briefing",
+      "path": "../../repos/harborworks-briefing-methods",
+      "revision": "briefing-r1"
+    }
+  ]
+}

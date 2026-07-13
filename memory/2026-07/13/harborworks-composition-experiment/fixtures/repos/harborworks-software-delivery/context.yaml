@@ -1,0 +1,70 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.domain.software.delivery",
+  "name": "harborworks-software-delivery",
+  "revision": "software-r1",
+  "owner": "Harborworks",
+  "description": "Small simulated context for harborworks-software-delivery.",
+  "scope": {
+    "functions": [
+      "analysis",
+      "briefing",
+      "remediation"
+    ],
+    "domains": [
+      "software-delivery"
+    ],
+    "always": false
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../harborworks-context-core",
+      "revision": "core-r1"
+    },
+    {
+      "id": "org.harborworks.methods.analysis",
+      "path": "../harborworks-analysis-methods",
+      "revision": "analysis-r1"
+    },
+    {
+      "id": "org.harborworks.methods.briefing",
+      "path": "../harborworks-briefing-methods",
+      "revision": "briefing-r1"
+    },
+    {
+      "id": "org.harborworks.methods.remediation",
+      "path": "../harborworks-remediation-methods",
+      "revision": "remediation-r1"
+    }
+  ],
+  "exports": [
+    {
+      "path": "knowledge_base",
+      "kind": "knowledge"
+    },
+    {
+      "path": "skills",
+      "kind": "skill"
+    },
+    {
+      "path": "src",
+      "kind": "tool"
+    }
+  ],
+  "runtime": {
+    "kind": "node",
+    "entrypoint": "src/cli.mjs"
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read",
+      "execute"
+    ],
+    "tool_authorization": "approval-required"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.scenario.revision-conflict",
+  "name": "harborworks-revision-conflict",
+  "revision": "scenario-conflict-r1",
+  "owner": "Harborworks",
+  "description": "Root-order independence scenario.",
+  "scope": {
+    "functions": [
+      "composition"
+    ],
+    "domains": [
+      "context-management"
+    ],
+    "always": true
+  },
+  "exports": [],
+  "runtime": {
+    "kind": "none",
+    "entrypoint": null
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read"
+    ],
+    "tool_authorization": "approval-required"
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.methods.analysis",
+      "path": "../../repos/harborworks-analysis-methods",
+      "revision": "analysis-r1"
+    },
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../../variants/harborworks-context-core-r2",
+      "revision": "core-r2"
+    }
+  ]
+}

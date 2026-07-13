@@ -1,0 +1,87 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.workbench.operations",
+  "name": "harborworks-operations-workbench",
+  "revision": "workbench-r1",
+  "owner": "Harborworks",
+  "description": "Small simulated context for harborworks-operations-workbench.",
+  "scope": {
+    "functions": [
+      "composition"
+    ],
+    "domains": [
+      "context-management"
+    ],
+    "always": true
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../harborworks-context-core",
+      "revision": "core-r1"
+    },
+    {
+      "id": "org.harborworks.methods.analysis",
+      "path": "../harborworks-analysis-methods",
+      "revision": "analysis-r1"
+    },
+    {
+      "id": "org.harborworks.methods.briefing",
+      "path": "../harborworks-briefing-methods",
+      "revision": "briefing-r1"
+    },
+    {
+      "id": "org.harborworks.methods.remediation",
+      "path": "../harborworks-remediation-methods",
+      "revision": "remediation-r1"
+    },
+    {
+      "id": "org.harborworks.domain.software.delivery",
+      "path": "../harborworks-software-delivery",
+      "revision": "software-r1"
+    },
+    {
+      "id": "org.harborworks.domain.data.governance",
+      "path": "../harborworks-data-governance",
+      "revision": "data-r1"
+    },
+    {
+      "id": "org.harborworks.domain.customer.operations",
+      "path": "../harborworks-customer-operations",
+      "revision": "customer-r1"
+    },
+    {
+      "id": "org.harborworks.domain.facilities.operations",
+      "path": "../harborworks-facilities-operations",
+      "revision": "facilities-r1"
+    }
+  ],
+  "exports": [
+    {
+      "path": "knowledge_base",
+      "kind": "knowledge"
+    },
+    {
+      "path": "skills",
+      "kind": "skill"
+    },
+    {
+      "path": "src",
+      "kind": "tool"
+    }
+  ],
+  "runtime": {
+    "kind": "node",
+    "entrypoint": "src/cli.mjs"
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read"
+    ],
+    "tool_authorization": "approval-required"
+  }
+}

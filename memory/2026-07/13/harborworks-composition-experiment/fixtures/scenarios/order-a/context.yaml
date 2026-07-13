@@ -1,0 +1,74 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.scenario.order",
+  "name": "harborworks-order-scenario",
+  "revision": "scenario-r1",
+  "owner": "Harborworks",
+  "description": "Root-order independence scenario.",
+  "scope": {
+    "functions": [
+      "composition"
+    ],
+    "domains": [
+      "context-management"
+    ],
+    "always": true
+  },
+  "exports": [],
+  "runtime": {
+    "kind": "none",
+    "entrypoint": null
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read"
+    ],
+    "tool_authorization": "approval-required"
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../../repos/harborworks-context-core",
+      "revision": "core-r1"
+    },
+    {
+      "id": "org.harborworks.methods.analysis",
+      "path": "../../repos/harborworks-analysis-methods",
+      "revision": "analysis-r1"
+    },
+    {
+      "id": "org.harborworks.methods.briefing",
+      "path": "../../repos/harborworks-briefing-methods",
+      "revision": "briefing-r1"
+    },
+    {
+      "id": "org.harborworks.methods.remediation",
+      "path": "../../repos/harborworks-remediation-methods",
+      "revision": "remediation-r1"
+    },
+    {
+      "id": "org.harborworks.domain.software.delivery",
+      "path": "../../repos/harborworks-software-delivery",
+      "revision": "software-r1"
+    },
+    {
+      "id": "org.harborworks.domain.data.governance",
+      "path": "../../repos/harborworks-data-governance",
+      "revision": "data-r1"
+    },
+    {
+      "id": "org.harborworks.domain.customer.operations",
+      "path": "../../repos/harborworks-customer-operations",
+      "revision": "customer-r1"
+    },
+    {
+      "id": "org.harborworks.domain.facilities.operations",
+      "path": "../../repos/harborworks-facilities-operations",
+      "revision": "facilities-r1"
+    }
+  ]
+}

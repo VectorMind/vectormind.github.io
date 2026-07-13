@@ -1,0 +1,11 @@
+{
+  "functions": [
+    "analysis",
+    "briefing"
+  ],
+  "domains": [
+    "software-delivery",
+    "data-governance",
+    "customer-operations"
+  ]
+}

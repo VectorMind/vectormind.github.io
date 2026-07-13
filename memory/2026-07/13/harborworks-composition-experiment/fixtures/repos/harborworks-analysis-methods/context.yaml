@@ -1,0 +1,53 @@
+{
+  "$schema": "experimental.harborworks.context/v0",
+  "id": "org.harborworks.methods.analysis",
+  "name": "harborworks-analysis-methods",
+  "revision": "analysis-r1",
+  "owner": "Harborworks",
+  "description": "Small simulated context for harborworks-analysis-methods.",
+  "scope": {
+    "functions": [
+      "analysis"
+    ],
+    "domains": [
+      "*"
+    ],
+    "always": false
+  },
+  "imports": [
+    {
+      "id": "org.harborworks.context.core",
+      "path": "../harborworks-context-core",
+      "revision": "core-r1"
+    }
+  ],
+  "exports": [
+    {
+      "path": "knowledge_base",
+      "kind": "knowledge"
+    },
+    {
+      "path": "skills",
+      "kind": "skill"
+    },
+    {
+      "path": "src",
+      "kind": "tool"
+    }
+  ],
+  "runtime": {
+    "kind": "python",
+    "entrypoint": "src/cli.py"
+  },
+  "policy": {
+    "allowed_capabilities": [
+      "read",
+      "execute"
+    ],
+    "required_capabilities": [
+      "read",
+      "execute"
+    ],
+    "tool_authorization": "approval-required"
+  }
+}
