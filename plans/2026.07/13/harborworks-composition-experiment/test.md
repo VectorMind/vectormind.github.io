@@ -10,7 +10,7 @@
 
 `python .cache\src\harborworks-composition\test_composer.py -v`
 
-Result: 6 tests passed.
+Result after Run 002: 7 tests passed.
 
 The tests verify:
 
@@ -23,6 +23,9 @@ The tests verify:
 - reversing import order preserves the identity set;
 - revision and policy conflicts fail visibly; and
 - every shallow skill references its owning knowledge base and CLI.
+- the full-union materialization exposes 54 unique, prefixed skills below one
+  root, resolves all 54 rewritten knowledge links, preserves 81 unique
+  destination paths, and executes all 54 skill-to-CLI paths.
 
 ## Runtime checks
 
@@ -37,3 +40,7 @@ Raw outputs remain ignored under
 `.cache/results/harborworks-composition/run-001/`. Compact durable observations
 are preserved in
 `memory/2026-07/13/harborworks-composition-experiment/run-001.md`.
+
+The Run 002 generated surface remains ignored under
+`.cache/harborworks-operations-workbench/`. Its compact evidence is preserved
+in `memory/2026-07/13/harborworks-composition-experiment/run-002.md`.

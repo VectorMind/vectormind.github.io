@@ -1,8 +1,8 @@
 # Harborworks manifest-composition experiment
 
 **Date:** 2026-07-13  
-**Status:** First deterministic mechanics run complete; manifest contract and
-model/harness evaluation remain open.
+**Status:** Deterministic mechanics and a full-union materialization run are
+complete; manifest contract and named-harness evaluation remain open.
 
 ## Question
 
@@ -32,6 +32,8 @@ instructions, real Git resolution, signatures, or authority-system exports.
   format decision.
 - Raw catalogs and materialized overlays remain local under
   `.cache/results/harborworks-composition/run-001/`.
+- The Run 002 harness surface is generated locally under
+  `.cache/harborworks-operations-workbench/`.
 
 ## Fixture topology
 
@@ -99,6 +101,10 @@ Detailed commands and observations are preserved in
 captured provisionally in [`candidate-rules.md`](candidate-rules.md); those
 rules are investigation notes, not the deferred durable specification.
 
+[`run-002.md`](run-002.md) records the second experiment: a full-union physical
+surface with one skills root, repository-prefixed skill names, and repository-
+namespaced knowledge and tooling.
+
 ## Findings
 
 1. **Destructive flattening loses information in this corpus.** The logical
@@ -122,6 +128,12 @@ rules are investigation notes, not the deferred durable specification.
    for the same root, graph, revisions, and policies produced the same 72
    imported artifact identities. This does not prove that changing the root or
    resolving version ranges is order-independent.
+7. **A functional physical handoff is possible for the fixture.** All 81
+   artifacts materialized without destination collisions; 54 skills were
+   discoverable through one root and all rewritten links and CLI paths worked.
+8. **Relocation is not free.** The materializer applied 270 controlled rewrite
+   occurrences across 54 skills. Unknown relative references remain a
+   compatibility problem rather than something the experiment solved.
 
 ## Interpretation
 
@@ -149,6 +161,8 @@ though real immutable Git revisions would normally prevent it.
   task success, or prompt savings.
 - No poisoning, authorization-bypass, or provenance-in-answer benchmark has
   been run.
+- Run 002 used a harness-neutral filesystem discovery simulation, not a named
+  agentic harness.
 
 The scratch composer should remain in `.cache/src/`. The next decision is
 whether to extend the experiment with a harness/model selection trial or first

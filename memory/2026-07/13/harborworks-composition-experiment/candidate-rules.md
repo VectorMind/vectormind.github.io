@@ -1,7 +1,7 @@
-# Candidate composition rules after Run 001
+# Candidate composition rules after Runs 001 and 002
 
 **Status:** Experimental design notes, not a durable specification.  
-**Evidence:** [`run-001.md`](run-001.md)
+**Evidence:** [`run-001.md`](run-001.md) and [`run-002.md`](run-002.md)
 
 These rules describe the smallest behavior consistent with the first
 Harborworks trial. They intentionally avoid deciding the serialization format,
@@ -9,14 +9,18 @@ lockfile model, or full policy algebra.
 
 ## Surface and identity
 
-### CR-001 - Composition is a logical union
+### CR-001 - Composition resolves a union and may materialize it
 
-The canonical result is a catalog of artifacts, not a copied directory tree.
-A filesystem tree, MCP projection, search index, or UI is a rendering of that
-catalog.
+Composition first resolves one full union of artifact identities. For a
+filesystem harness, it may materialize that union as a generated tree. The
+catalog remains the provenance and resolution ledger for the physical surface;
+it is not a substitute for the harness-facing files.
 
 **Run-001 basis:** The catalog retained 81 identities while the naive tree
 retained 54 paths after 27 overwrites.
+
+**Run-002 refinement:** A repository-namespaced materialization retained all 81
+artifacts with no destination collisions.
 
 ### CR-002 - Relative paths are not global identities
 
@@ -133,6 +137,62 @@ Revision conflicts, identity mismatches, unsupported policy requirements, and
 projection collisions must produce stable, inspectable diagnostics. Silent
 precedence is not permitted.
 
+## Materialized harness surface
+
+### CR-016 - Composition uses the full resolved union
+
+The current model has no composition profiles. Materialization includes all
+artifacts exported by every successfully resolved context. Task-level
+selection remains a downstream harness concern.
+
+### CR-017 - One generated root belongs to one composer
+
+During experimentation, generated output lives under
+`.cache/<composer-repository-name>/`. The composer name prevents unrelated
+composition roots from sharing one cache surface.
+
+A possible future repository-local `.composed/` convention remains deferred.
+
+### CR-018 - Skills share one discovery root and are always prefixed
+
+Materialized skills use:
+
+```text
+skills/<source-repository-name>--<source-skill-name>/SKILL.md
+```
+
+The generated folder and frontmatter name must match. Prefixing is unconditional
+so a later import cannot rename an existing skill merely by introducing a
+collision.
+
+### CR-019 - Knowledge and tooling retain repository subdirectories
+
+Materialized knowledge and tooling use:
+
+```text
+knowledge_base/<source-repository-name>/...
+src/<source-repository-name>/...
+```
+
+This preserves familiar top-level artifact classes while preventing source
+relative-path collisions.
+
+### CR-020 - Relocation must be validated
+
+A skill is composition-compatible only when all references needed for its
+operation can be resolved in the materialized surface. The composer must either
+apply a declared deterministic transformation or report an unsupported
+reference. Silent broken links are not permitted.
+
+Run 002 transformed known fixture patterns successfully. It does not establish
+that arbitrary Markdown instructions or shell commands can be safely rewritten.
+
+### CR-021 - Source and materialized identities remain linked
+
+The generated catalog records each source identity, source digest,
+materialized path, and materialized digest. Transforming a skill must not erase
+which immutable source artifact produced it.
+
 ## Explicitly deferred
 
 Run 001 does not settle:
@@ -147,3 +207,7 @@ Run 001 does not settle:
 - cycles between peers;
 - MCP or filesystem projection schemas; or
 - task-selection quality under a real model or harness.
+- the portable reference syntax required of composable skills;
+- whether unsupported references fail composition or use generated wrappers;
+- named-harness discovery configuration; or
+- the final location and lifecycle of a repository-local `.composed/` tree.

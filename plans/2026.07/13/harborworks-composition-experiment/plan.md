@@ -32,6 +32,9 @@ selection remains necessary.
   raw outputs in `.cache/results/harborworks-composition/`.
 - Record reproducible methods, compact observations, limitations, and open
   decisions in the investigation folder.
+- Materialize the full union under `.cache/<composer-name>/` with one skill
+  root and repository-namespaced knowledge and tooling, then validate reference
+  relocation and harness-neutral discovery.
 
 ## Non-goals
 
@@ -56,6 +59,12 @@ selection remains necessary.
   inherit, or make composition fail closed.
 - **OP-005 - Locking:** Determine whether immutable revisions belong directly
   in the manifest or in a generated lockfile.
+- **OP-006 - Relocatable references:** Decide whether composition requires a
+  restricted context-root reference form, supports wrappers, or rejects
+  unrecognized relative references.
+- **OP-007 - Generated surface:** Decide whether a future repository-local
+  `.composed/` convention should replace the experiment's
+  `.cache/<composer-name>/` path.
 
 ## Phases
 

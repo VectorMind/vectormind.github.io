@@ -20,6 +20,16 @@ manifest decisions and durable promotion remain open.
   investigation.
 - Recorded 15 evidence-linked candidate rules in the investigation without
   creating the deferred durable specification.
+- Added a full-union materializer that writes the harness surface directly to
+  `.cache/harborworks-operations-workbench/{skills,knowledge_base,src}`.
+- Prefixed all generated skill folders and frontmatter names with their source
+  repository, and namespaced knowledge and tooling one level below their common
+  roots.
+- Rebased the fixture's known knowledge links, CLI entrypoints, skill names,
+  knowledge arguments, and execution-root wording while preserving source and
+  materialized digests in the generated catalog.
+- Validated 54 skill discoveries, 54 relative links, and 54 materialized CLI
+  invocations, then recorded the limitations in Run 002.
 
 ## Deliberate deviations
 
@@ -38,3 +48,5 @@ manifest decisions and durable promotion remain open.
 - Optional repository scope hints versus required prefilter semantics.
 - Effective policy calculation across paths and artifact classes.
 - Whether a model/harness benchmark should precede the first durable spec.
+- Portable reference restrictions versus generated compatibility wrappers.
+- Whether `.composed/` should become the standard generated surface.
