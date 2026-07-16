@@ -47,3 +47,4 @@ artifact to GitHub Pages. Deployment validation is tracked in
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
