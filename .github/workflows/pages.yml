@@ -25,7 +25,7 @@ jobs:
         id: render
         uses: MicroWebStacks/astro-huge-doc@main
         with:
-          engine-version: '0.0.10'
+          engine-version: '0.0.15'
           workspace: '.'
           manifest: 'manifest.yaml'
           out-dir: 'dist'
