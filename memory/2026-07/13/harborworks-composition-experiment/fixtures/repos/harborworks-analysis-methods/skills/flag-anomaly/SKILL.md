@@ -2,7 +2,7 @@
 name: flag-anomaly
 description: Use the analysis method over selected domain knowledge.
 context-functions: analysis
-context-domains: *
+context-domains: "*"
 ---
 
 # Flag Anomaly

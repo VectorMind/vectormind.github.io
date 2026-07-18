@@ -2,7 +2,7 @@
 name: list-risks
 description: Use the briefing method over selected domain knowledge.
 context-functions: briefing
-context-domains: *
+context-domains: "*"
 ---
 
 # List Risks

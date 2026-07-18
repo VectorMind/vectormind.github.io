@@ -2,7 +2,7 @@
 name: draft-brief
 description: Use the briefing method over selected domain knowledge.
 context-functions: briefing
-context-domains: *
+context-domains: "*"
 ---
 
 # Draft Brief

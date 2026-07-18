@@ -2,7 +2,7 @@
 name: analyze-signal
 description: Use the analysis method over selected domain knowledge.
 context-functions: analysis
-context-domains: *
+context-domains: "*"
 ---
 
 # Analyze Signal

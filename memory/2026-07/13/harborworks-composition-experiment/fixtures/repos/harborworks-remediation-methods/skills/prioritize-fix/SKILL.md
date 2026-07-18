@@ -2,7 +2,7 @@
 name: prioritize-fix
 description: Use the remediation method over selected domain knowledge.
 context-functions: remediation
-context-domains: *
+context-domains: "*"
 ---
 
 # Prioritize Fix

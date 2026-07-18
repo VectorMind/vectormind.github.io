@@ -2,7 +2,7 @@
 name: format-decision
 description: Use the briefing method over selected domain knowledge.
 context-functions: briefing
-context-domains: *
+context-domains: "*"
 ---
 
 # Format Decision
